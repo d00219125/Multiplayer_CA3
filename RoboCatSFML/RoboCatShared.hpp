@@ -49,6 +49,11 @@ using std::unordered_set;
 class RoboCat;
 class GameObject;
 
+#include "SFML\System.hpp"
+#include "SFML\Window.hpp"
+#include "SFML\Graphics.hpp"
+#include "SFML\Audio.hpp"
+
 #include "RoboMath.hpp"
 
 #include "StringUtils.hpp"

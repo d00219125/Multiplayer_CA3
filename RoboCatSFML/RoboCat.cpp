@@ -1,13 +1,12 @@
 #include "RoboCatPCH.hpp"
 
-//zoom hardcoded at 100...if we want to lock players on screen, this could be calculated from zoom
-const float HALF_WORLD_HEIGHT = 3.6f;
-const float HALF_WORLD_WIDTH = 6.4f;
+const float WORLD_HEIGHT = 720.f;
+const float WORLD_WIDTH = 1280.f;
 
 RoboCat::RoboCat() :
 	GameObject(),
-	mMaxRotationSpeed(5.f),
-	mMaxLinearSpeed(50.f),
+	mMaxRotationSpeed(100.f),
+	mMaxLinearSpeed(5000.f),
 	mVelocity(Vector3::Zero),
 	mWallRestitution(0.1f),
 	mCatRestitution(0.1f),
@@ -16,7 +15,7 @@ RoboCat::RoboCat() :
 	mIsShooting(false),
 	mHealth(10)
 {
-	SetCollisionRadius(0.5f);
+	SetCollisionRadius(60.f);
 }
 
 void RoboCat::ProcessInput(float inDeltaTime, const InputState& inInputState)
@@ -48,7 +47,8 @@ void RoboCat::SimulateMovement(float inDeltaTime)
 {
 	//simulate us...
 	AdjustVelocityByThrust(inDeltaTime);
-
+	Vector3 currentLocation = GetLocation();
+	Vector3 newLocation = GetLocation() + mVelocity * inDeltaTime;
 	SetLocation(GetLocation() + mVelocity * inDeltaTime);
 
 	ProcessCollisions();
@@ -147,29 +147,29 @@ void RoboCat::ProcessCollisionsWithScreenWalls()
 	float radius = GetCollisionRadius();
 
 	//if the cat collides against a wall, the quick solution is to push it off
-	if ((y + radius) >= HALF_WORLD_HEIGHT && vy > 0)
+	if ((y + radius) >= WORLD_HEIGHT && vy > 0)
 	{
 		mVelocity.mY = -vy * mWallRestitution;
-		location.mY = HALF_WORLD_HEIGHT - radius;
+		location.mY = WORLD_HEIGHT - radius;
 		SetLocation(location);
 	}
-	else if (y <= (-HALF_WORLD_HEIGHT - radius) && vy < 0)
+	else if (y - radius <= 0 && vy < 0)
 	{
 		mVelocity.mY = -vy * mWallRestitution;
-		location.mY = -HALF_WORLD_HEIGHT - radius;
+		location.mY = radius;
 		SetLocation(location);
 	}
 
-	if ((x + radius) >= HALF_WORLD_WIDTH && vx > 0)
+	if ((x + radius) >= WORLD_WIDTH && vx > 0)
 	{
 		mVelocity.mX = -vx * mWallRestitution;
-		location.mX = HALF_WORLD_WIDTH - radius;
+		location.mX = WORLD_WIDTH - radius;
 		SetLocation(location);
 	}
-	else if (x <= (-HALF_WORLD_WIDTH - radius) && vx < 0)
+	else if (x - radius <= 0 && vx < 0)
 	{
 		mVelocity.mX = -vx * mWallRestitution;
-		location.mX = -HALF_WORLD_WIDTH - radius;
+		location.mX = radius;
 		SetLocation(location);
 	}
 }

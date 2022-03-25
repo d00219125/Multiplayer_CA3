@@ -183,18 +183,23 @@ namespace RoboMath
 	{
 		return inRadians * 180.0f / PI;
 	}
+
+	inline float ToRadians(float inDegrees)
+	{
+		return (inDegrees / 180.0f) * PI;
+	}
 }
 
 namespace Colors
 {
 	static const Vector3 Black(0.0f, 0.0f, 0.0f);
-	static const Vector3 White(1.0f, 1.0f, 1.0f);
-	static const Vector3 Red(1.0f, 0.0f, 0.0f);
-	static const Vector3 Green(0.0f, 1.0f, 0.0f);
-	static const Vector3 Blue(0.0f, 0.0f, 1.0f);
-	static const Vector3 LightYellow(1.0f, 1.0f, 0.88f);
-	static const Vector3 LightBlue(0.68f, 0.85f, 0.9f);
-	static const Vector3 LightPink(1.0f, 0.71f, 0.76f);
-	static const Vector3 LightGreen(0.56f, 0.93f, 0.56f);
+	static const Vector3 White(255.0f, 255.0f, 255.0f);
+	static const Vector3 Red(255.0f, 0.0f, 0.0f);
+	static const Vector3 Green(0.0f, 255.0f, 0.0f);
+	static const Vector3 Blue(0.0f, 0.0f, 255.0f);
+	static const Vector3 LightYellow(255.0f, 255.0f, 224.4f);
+	static const Vector3 LightBlue(173.4f, 216.75f, 229.5f);
+	static const Vector3 LightPink(255.0f, 181.05f, 193.8f);
+	static const Vector3 LightGreen(142.8f, 237.15f, 142.8f);
 }
 

@@ -2,6 +2,7 @@ class ScoreBoardManager
 {
 public:
 
+
 	static void StaticInit();
 	static std::unique_ptr< ScoreBoardManager >	sInstance;
 

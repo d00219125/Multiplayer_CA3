@@ -30,27 +30,27 @@
     <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v142</PlatformToolset>
-    <CharacterSet>Unicode</CharacterSet>
+    <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v142</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
-    <CharacterSet>Unicode</CharacterSet>
+    <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v142</PlatformToolset>
-    <CharacterSet>Unicode</CharacterSet>
+    <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v142</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
-    <CharacterSet>Unicode</CharacterSet>
+    <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
@@ -88,6 +88,9 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>C:\Users\loanej\dev\SFML-2.5.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>RoboCatPCH.hpp</PrecompiledHeaderFile>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -102,6 +105,9 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>C:\Users\loanej\dev\SFML-2.5.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>RoboCatPCH.hpp</PrecompiledHeaderFile>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -116,6 +122,9 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>C:\Users\loanej\dev\SFML-2.5.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>RoboCatPCH.hpp</PrecompiledHeaderFile>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -130,6 +139,9 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>C:\Users\loanej\dev\SFML-2.5.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>RoboCatPCH.hpp</PrecompiledHeaderFile>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -139,6 +151,61 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Engine.hpp" />
+    <ClInclude Include="GameObject.hpp" />
+    <ClInclude Include="GameObjectRegistry.hpp" />
+    <ClInclude Include="InputAction.hpp" />
+    <ClInclude Include="InputState.hpp" />
+    <ClInclude Include="MemoryBitStream.hpp" />
+    <ClInclude Include="Mouse.hpp" />
+    <ClInclude Include="Move.hpp" />
+    <ClInclude Include="MoveList.hpp" />
+    <ClInclude Include="NetworkManager.hpp" />
+    <ClInclude Include="ReplicationCommand.hpp" />
+    <ClInclude Include="RoboCat.hpp" />
+    <ClInclude Include="RoboCatPCH.hpp" />
+    <ClInclude Include="RoboCatShared.hpp" />
+    <ClInclude Include="RoboMath.hpp" />
+    <ClInclude Include="ScoreBoardManager.hpp" />
+    <ClInclude Include="SocketAddress.hpp" />
+    <ClInclude Include="SocketAddressFactory.hpp" />
+    <ClInclude Include="SocketUtil.hpp" />
+    <ClInclude Include="StringUtils.hpp" />
+    <ClInclude Include="TCPSocket.hpp" />
+    <ClInclude Include="Timing.hpp" />
+    <ClInclude Include="UDPSocket.hpp" />
+    <ClInclude Include="WeightedTimedMovingAverage.hpp" />
+    <ClInclude Include="World.hpp" />
+    <ClInclude Include="Yarn.hpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Engine.cpp" />
+    <ClCompile Include="GameObject.cpp" />
+    <ClCompile Include="GameObjectRegistry.cpp" />
+    <ClCompile Include="InputState.cpp" />
+    <ClCompile Include="MemoryBitStream.cpp" />
+    <ClCompile Include="Mouse.cpp" />
+    <ClCompile Include="Move.cpp" />
+    <ClCompile Include="MoveList.cpp" />
+    <ClCompile Include="NetworkManager.cpp" />
+    <ClCompile Include="RoboCat.cpp" />
+    <ClCompile Include="RoboCatPCH.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="RoboMath.cpp" />
+    <ClCompile Include="ScoreBoardManager.cpp" />
+    <ClCompile Include="SocketAddress.cpp" />
+    <ClCompile Include="SocketAddressFactory.cpp" />
+    <ClCompile Include="SocketUtil.cpp" />
+    <ClCompile Include="StringUtils.cpp" />
+    <ClCompile Include="TCPSocket.cpp" />
+    <ClCompile Include="Timing.cpp" />
+    <ClCompile Include="UDPSocket.cpp" />
+    <ClCompile Include="World.cpp" />
+    <ClCompile Include="Yarn.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

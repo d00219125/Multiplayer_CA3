@@ -31,7 +31,7 @@ void Engine::HandleEvent(sf::Event& p_event)
 	(void)p_event;
 }
 
-bool Engine::PullEvent(sf::Event& p_event)
+bool Engine::PollEvent(sf::Event& p_event)
 {
 	return false;
 }
@@ -45,7 +45,7 @@ int Engine::DoRunLoop()
 
 	while (!quit && m_should_keep_running)
 	{
-		while (PullEvent(current_event))
+		while (PollEvent(current_event))
 		{
 			if (current_event.type == sf::Event::Closed)
 			{
@@ -57,7 +57,7 @@ int Engine::DoRunLoop()
 			}
 		}
 
-		Timing::s_instance.Update();
+		Timing::sInstance.Update();
 		DoFrame();
 	}
 	return current_event.type;
@@ -65,7 +65,7 @@ int Engine::DoRunLoop()
 
 void Engine::DoFrame()
 {
-	World::s_instance->Update();
+	World::sInstance->Update();
 }
 
 
