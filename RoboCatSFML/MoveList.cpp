@@ -12,14 +12,25 @@ const Move& MoveList::AddMove(const InputState& inInputState, float inTimestamp)
 	return mMoves.back();
 }
 
-bool MoveList::AddMove(const Move& inMove)
+bool MoveList::AddMoveIfNew(const Move& inMove)
 {
-	//adjust the delta time and then place!
+	//we might have already received this move in another packet ( since we're sending the same move in multiple packets )
+	//so make sure it's new...
+
+	//adjust the deltatime and then place!
 	float timeStamp = inMove.GetTimestamp();
-	float deltaTime = mLastMoveTimestamp >= 0.f ? timeStamp - mLastMoveTimestamp : 0.f;
-	mLastMoveTimestamp = timeStamp;
-	mMoves.emplace_back(inMove.GetInputState(), timeStamp, deltaTime);
-	return true;
+
+	if (timeStamp > mLastMoveTimestamp)
+	{
+		float deltaTime = mLastMoveTimestamp >= 0.f ? timeStamp - mLastMoveTimestamp : 0.f;
+
+		mLastMoveTimestamp = timeStamp;
+
+		mMoves.emplace_back(inMove.GetInputState(), timeStamp, deltaTime);
+		return true;
+	}
+
+	return false;
 }
 
 void MoveList::RemovedProcessedMoves(float inLastMoveProcessedOnServerTimestamp)

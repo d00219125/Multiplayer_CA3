@@ -206,7 +206,7 @@ void NetworkManagerClient::UpdateSendingInputPacket()
 void NetworkManagerClient::SendInputPacket()
 {
 	//only send if there's any input to send!
-	MoveList& moveList = InputManager::sInstance->GetMoveList();
+	const MoveList& moveList = InputManager::sInstance->GetMoveList();
 
 	if (moveList.HasMoves())
 	{

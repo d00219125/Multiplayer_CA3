@@ -233,7 +233,7 @@ void NetworkManagerServer::HandleInputPacket(ClientProxyPtr inClientProxy, Input
 	{
 		if (move.Read(inInputStream))
 		{
-			if (inClientProxy->GetUnprocessedMoveList().AddMove(move))
+			if (inClientProxy->GetUnprocessedMoveList().AddMoveIfNew(move))
 			{
 				inClientProxy->SetIsLastMoveTimestampDirty(true);
 			}
