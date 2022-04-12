@@ -59,7 +59,10 @@ void NetworkManagerServer::ProcessPacket(ClientProxyPtr inClientProxy, InputMemo
 		SendWelcomePacket(inClientProxy);
 		break;
 	case kInputCC:
-		HandleInputPacket(inClientProxy, inInputStream);
+		if (inClientProxy->GetDeliveryNotificationManager().ReadAndProcessState(inInputStream))
+		{
+			HandleInputPacket(inClientProxy, inInputStream);
+		}
 		break;
 	default:
 		LOG("Unknown packet type received from %s", inClientProxy->GetSocketAddress().ToString().c_str());
@@ -131,6 +134,9 @@ void NetworkManagerServer::SendOutgoingPackets()
 	for (auto it = mAddressToClientMap.begin(), end = mAddressToClientMap.end(); it != end; ++it)
 	{
 		ClientProxyPtr clientProxy = it->second;
+		//process any timed out packets while we're going through the list
+		clientProxy->GetDeliveryNotificationManager().ProcessTimedOutPackets();
+
 		if (clientProxy->IsLastMoveTimestampDirty())
 		{
 			SendStatePacketToClient(clientProxy);
@@ -142,6 +148,9 @@ void NetworkManagerServer::UpdateAllClients()
 {
 	for (auto it = mAddressToClientMap.begin(), end = mAddressToClientMap.end(); it != end; ++it)
 	{
+		//process any timed out packets while we're going throug hthe list
+		it->second->GetDeliveryNotificationManager().ProcessTimedOutPackets();
+
 		SendStatePacketToClient(it->second);
 	}
 }
@@ -154,11 +163,16 @@ void NetworkManagerServer::SendStatePacketToClient(ClientProxyPtr inClientProxy)
 	//it's state!
 	statePacket.Write(kStateCC);
 
+	InFlightPacket* ifp = inClientProxy->GetDeliveryNotificationManager().WriteState(statePacket);
+
 	WriteLastMoveTimestampIfDirty(statePacket, inClientProxy);
 
 	AddScoreBoardStateToPacket(statePacket);
 
-	inClientProxy->GetReplicationManagerServer().Write(statePacket);
+	ReplicationManagerTransmissionData* rmtd = new ReplicationManagerTransmissionData(&inClientProxy->GetReplicationManagerServer());
+	inClientProxy->GetReplicationManagerServer().Write(statePacket, rmtd);
+	ifp->SetTransmissionData('RPLM', TransmissionDataPtr(rmtd));
+
 	SendPacket(statePacket, inClientProxy->GetSocketAddress());
 
 }

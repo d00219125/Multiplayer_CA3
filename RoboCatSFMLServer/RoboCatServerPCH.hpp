@@ -1,5 +1,6 @@
 #include "RoboCatShared.hpp"
 
+#include "ReplicationManagerTransmissionData.hpp"
 #include "ReplicationManagerServer.hpp"
 
 #include "ClientProxy.hpp"

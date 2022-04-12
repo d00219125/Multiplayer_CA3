@@ -47,8 +47,7 @@ void RoboCat::SimulateMovement(float inDeltaTime)
 {
 	//simulate us...
 	AdjustVelocityByThrust(inDeltaTime);
-	Vector3 currentLocation = GetLocation();
-	Vector3 newLocation = GetLocation() + mVelocity * inDeltaTime;
+	
 	SetLocation(GetLocation() + mVelocity * inDeltaTime);
 
 	ProcessCollisions();

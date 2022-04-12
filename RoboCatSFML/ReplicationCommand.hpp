@@ -7,6 +7,8 @@ enum ReplicationAction
 	RA_MAX
 };
 
+class ReplicationManagerTransmissionData;
+
 
 struct ReplicationCommand
 {

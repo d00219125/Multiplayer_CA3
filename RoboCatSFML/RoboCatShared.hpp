@@ -64,6 +64,13 @@ class GameObject;
 #include "SocketUtil.hpp"
 
 #include "MemoryBitStream.hpp"
+#include "LinkingContext.hpp"
+#include "ByteSwap.hpp"
+
+#include "TransmissionData.hpp"
+#include "InFlightPacket.hpp"
+#include "AckRange.hpp"
+#include "DeliveryNotificationManager.hpp"
 
 #include "InputAction.hpp"
 #include "InputState.hpp"
