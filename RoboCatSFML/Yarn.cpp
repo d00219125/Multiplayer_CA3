@@ -5,7 +5,7 @@ Yarn::Yarn() :
 	mVelocity(Vector3::Zero),
 	mPlayerId(0)
 {
-	SetScale(GetScale() * 0.f);
+	SetScale(GetScale() * 0.3f);
 	SetCollisionRadius(20.f);
 }
 
