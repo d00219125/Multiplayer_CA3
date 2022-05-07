@@ -88,7 +88,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\Users\Neil Ogbeide\Desktop\SFML\SFML-2.5.1\include;../RoboCatSFML;C:\Users\loanej\dev\SFML-2.5.1\include;C:\Users\loanej\dev\SFML-2.5.1\include;../RoboCatSFML;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\Neil Ogbeide\Desktop\SFML\SFML-2.5.1\include;../RoboCatSFML;C:\Users\loanej\dev\SFML-2.5.1\include;D:\SFML-2.5.1\include</AdditionalIncludeDirectories>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>RoboCatServerPCH.hpp</PrecompiledHeaderFile>
     </ClCompile>
@@ -96,6 +96,8 @@
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalDependencies>ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>
+      </AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -106,7 +108,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\Users\Neil Ogbeide\Desktop\SFML\SFML-2.5.1\include;../RoboCatSFML;C:\Users\loanej\dev\SFML-2.5.1\include;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\Neil Ogbeide\Desktop\SFML\SFML-2.5.1\include;../RoboCatSFML;C:\Users\loanej\dev\SFML-2.5.1\include;D:\SFML-2.5.1\include</AdditionalIncludeDirectories>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>RoboCatServerPCH.hpp</PrecompiledHeaderFile>
     </ClCompile>
@@ -116,6 +118,8 @@
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalDependencies>ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>
+      </AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">

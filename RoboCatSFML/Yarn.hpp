@@ -2,7 +2,8 @@ class Yarn : public GameObject
 {
 public:
 
-	CLASS_IDENTIFICATION('YARN', GameObject)
+	CLASS_IDENTIFI
+		ION('YARN', GameObject)
 
 		enum EYarnReplicationState
 	{
