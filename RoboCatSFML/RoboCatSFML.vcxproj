@@ -89,6 +89,7 @@
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>C:\Users\Neil Ogbeide\Desktop\SFML\SFML-2.5.1\include;C:\Users\loanej\dev\SFML-2.5.1\include;D:\SFML-2.5.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\Smokey\Desktop\SFML-2.5.1\include;C:\Users\Neil Ogbeide\Desktop\SFML\SFML-2.5.1\include;C:\Users\loanej\dev\SFML-2.5.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>RoboCatPCH.hpp</PrecompiledHeaderFile>
     </ClCompile>
@@ -106,6 +107,7 @@
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>C:\Users\Neil Ogbeide\Desktop\SFML\SFML-2.5.1\include;C:\Users\loanej\dev\SFML-2.5.1\include;D:\SFML-2.5.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\Smokey\Desktop\SFML-2.5.1\include;C:\Users\Neil Ogbeide\Desktop\SFML\SFML-2.5.1\include;C:\Users\loanej\dev\SFML-2.5.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>RoboCatPCH.hpp</PrecompiledHeaderFile>
     </ClCompile>
