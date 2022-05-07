@@ -37,6 +37,12 @@ protected:
 	float		mMuzzleSpeed;
 	int			mPlayerId;
 
+private:
+	//Vector3 mBulletOffset = Vector3( 105.0f, 90.0f ,105.0f);
+
+private:
+	float AngleShooting(Vector3 vec);
+	
 };
 
 typedef shared_ptr< Yarn >	YarnPtr;

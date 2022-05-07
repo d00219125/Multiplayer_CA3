@@ -1,4 +1,6 @@
 #include "RoboCatPCH.hpp"
+#include <math.h>
+#include <iostream>
 
 Yarn::Yarn() :
 	mMuzzleSpeed(600.f),
@@ -7,6 +9,21 @@ Yarn::Yarn() :
 {
 	SetScale(GetScale() * 0.3f);
 	SetCollisionRadius(20.f);
+}
+
+float Yarn::AngleShooting(Vector3 vec)
+{
+	if (vec.mX < 0) 
+	{
+		return RoboMath::ToRadians( 360) - (atan2(vec.mX,-vec.mY) * -1.0f);
+	}
+	else 
+	{
+		return  (atan2(vec.mX, -vec.mY));
+	}
+
+
+	//return 360 - RoboMath::ToDegrees((atan2(vec.mX, vec.mY) * si sgn(vec.mX)));
 }
 
 
@@ -25,7 +42,7 @@ uint32_t Yarn::Write(OutputMemoryBitStream& inOutputStream, uint32_t inDirtyStat
 
 		Vector3 velocity = GetVelocity();
 		inOutputStream.Write(velocity.mX);
-		inOutputStream.Write(velocity.mY);
+		inOutputStream.Write(velocity.mY );
 
 		inOutputStream.Write(GetRotation());
 
@@ -82,8 +99,13 @@ void Yarn::InitFromShooter(RoboCat* inShooter)
 
 	Vector3 forward = inShooter->GetForwardVector();
 	SetVelocity(inShooter->GetVelocity() + forward * mMuzzleSpeed);
-	SetLocation(inShooter->GetLocation() /* + forward * 0.55f */);
+	//SetLocation(inShooter->GetLocation() + ( forward *mBulletOffset) );
+	float angle = AngleShooting(forward);
+	float bulletX = cos(angle * .5) *10;// *-100;//100 is half of player width
+	float bulletY = sin(angle * .5) *10;// *-100;
 
+
+	SetLocation(inShooter->GetLocation() + Vector3(bulletX+10, bulletY+10, 0)); 
 	SetRotation(inShooter->GetRotation());
 }
 
