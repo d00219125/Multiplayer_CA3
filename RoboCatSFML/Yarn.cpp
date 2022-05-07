@@ -1,11 +1,11 @@
 #include "RoboCatPCH.hpp"
 
 Yarn::Yarn() :
-	mMuzzleSpeed(300.f),
+	mMuzzleSpeed(600.f),
 	mVelocity(Vector3::Zero),
 	mPlayerId(0)
 {
-	SetScale(GetScale() * 0.5f);
+	SetScale(GetScale() * 0.f);
 	SetCollisionRadius(20.f);
 }
 
