@@ -1,7 +1,7 @@
 #include "RoboCatPCH.hpp"
 
-const float WORLD_HEIGHT = 720.f;
-const float WORLD_WIDTH = 1280.f;
+const float WORLD_HEIGHT = 1100.f;
+const float WORLD_WIDTH = 1950.f;
 
 RoboCat::RoboCat() :
 	GameObject(),
@@ -13,7 +13,7 @@ RoboCat::RoboCat() :
 	mThrustDir(0.f),
 	mPlayerId(0),
 	mIsShooting(false),
-	mHealth(3)
+	mHealth(10)
 {
 	SetCollisionRadius(60.f);
 }
