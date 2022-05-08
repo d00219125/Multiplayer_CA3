@@ -92,3 +92,7 @@ class GameObject;
 #include "ReplicationCommand.hpp"
 #include "NetworkManager.hpp"
 #include "Engine.hpp"
+
+#include "SoundEffect.hpp"
+#include "SoundNode.hpp"
+#include "SoundPlayer.hpp"
