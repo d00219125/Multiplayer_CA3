@@ -167,6 +167,8 @@
     <ClInclude Include="Mouse.hpp" />
     <ClInclude Include="Move.hpp" />
     <ClInclude Include="MoveList.hpp" />
+    <ClInclude Include="MusicPlayer.hpp" />
+    <ClInclude Include="MusicThemes.hpp" />
     <ClInclude Include="NetworkManager.hpp" />
     <ClInclude Include="ReplicationCommand.hpp" />
     <ClInclude Include="RoboCat.hpp" />
@@ -198,6 +200,7 @@
     <ClCompile Include="Mouse.cpp" />
     <ClCompile Include="Move.cpp" />
     <ClCompile Include="MoveList.cpp" />
+    <ClCompile Include="MusicPlayer.cpp" />
     <ClCompile Include="NetworkManager.cpp" />
     <ClCompile Include="RoboCat.cpp" />
     <ClCompile Include="RoboCatPCH.cpp">

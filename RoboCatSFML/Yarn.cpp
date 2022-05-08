@@ -36,6 +36,7 @@ uint32_t Yarn::Write(OutputMemoryBitStream& inOutputStream, uint32_t inDirtyStat
 	{
 		inOutputStream.Write((bool)true);
 
+		//Player bullet spawn position
 		Vector3 location = GetLocation();
 		inOutputStream.Write(location.mX);
 		inOutputStream.Write(location.mY);
