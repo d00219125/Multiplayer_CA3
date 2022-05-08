@@ -47,6 +47,7 @@ using std::string;
 using std::unordered_set;
 
 class RoboCat;
+class Zombie;
 class GameObject;
 
 #include "SFML\System.hpp"

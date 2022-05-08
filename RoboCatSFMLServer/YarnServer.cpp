@@ -38,5 +38,16 @@ bool YarnServer::HandleCollisionWithCat(RoboCat* inCat)
 	return false;
 }
 
+bool YarnServer::HandleCollisionWithZombie(Zombie* inZombie)
+{
+
+	//kill Zombie!
+	SetDoesWantToDie(true);
+
+	static_cast<ZombieServer*>(inZombie)->TakeDamage(GetPlayerId());
+
+	return false;
+}
+
 
 

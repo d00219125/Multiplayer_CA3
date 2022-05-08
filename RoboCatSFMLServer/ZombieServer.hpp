@@ -6,6 +6,8 @@ public:
 
 	virtual bool HandleCollisionWithCat(RoboCat* inCat) override;
 
+	void TakeDamage(int inDamagingZombie);
+
 protected:
 	ZombieServer();
 };

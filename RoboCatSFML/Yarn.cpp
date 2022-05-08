@@ -92,6 +92,13 @@ bool Yarn::HandleCollisionWithCat(RoboCat* inCat)
 	return false;
 }
 
+bool Yarn::HandleCollisionWithZombie(Zombie* inZombie)
+{
+	(void)inZombie;
+
+	return false;
+}
+
 
 void Yarn::InitFromShooter(RoboCat* inShooter)
 {

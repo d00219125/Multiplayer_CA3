@@ -6,6 +6,8 @@ public:
 
 	virtual bool		HandleCollisionWithCat(RoboCat* inCat) override;
 
+	virtual bool		HandleCollisionWithZombie(Zombie* inZombie) override;
+
 	virtual void Update() override;
 
 protected:

@@ -30,6 +30,7 @@ public:
 	virtual void Update() override;
 
 	virtual bool HandleCollisionWithCat(RoboCat* inCat) override;
+	virtual bool HandleCollisionWithZombie(Zombie* inZombie) override;
 
 protected:
 	Yarn();

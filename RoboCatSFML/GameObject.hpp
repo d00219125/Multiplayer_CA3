@@ -12,11 +12,13 @@ public:
 	virtual ~GameObject() {}
 
 	virtual RoboCat* GetAsCat() { return nullptr; }
+	virtual Zombie* GetAsZombie() { return nullptr; }
 
 	virtual uint32_t GetAllStateMask() const { return 0; }
 
 	//return whether to keep processing collision
 	virtual bool HandleCollisionWithCat(RoboCat* inCat) { (void)inCat; return true; }
+	virtual bool HandleCollisionWithZombie(Zombie* inZombie) { (void)inZombie; return true; }
 
 	virtual void Update();
 

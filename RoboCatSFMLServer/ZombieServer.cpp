@@ -13,15 +13,34 @@ void ZombieServer::HandleDying()
 
 bool ZombieServer::HandleCollisionWithCat(RoboCat* inCat)
 {
-	//kill yourself!
-	SetDoesWantToDie(true);
+	if (inCat->GetPlayerId() != GetPlayerId())
+	{
+		//kill yourself!
+		SetDoesWantToDie(true);
 
-	ScoreBoardManager::sInstance->IncScore(inCat->GetPlayerId(), 1);
+		static_cast<RoboCatServer*>(inCat)->TakeDamage(GetPlayerId());
+
+	}
+
 
 	return false;
 }
 
 
+void ZombieServer::TakeDamage(int inDamagingZombie)
+{
+	mHealth--;
+	if (mHealth <= 0.f)
+	{
+		ScoreBoardManager::sInstance->IncScore(inDamagingZombie, 1);
+
+		SetDoesWantToDie(true);
+
+
+	}
+
+	NetworkManagerServer::sInstance->SetStateDirty(GetNetworkId(), ECRS_Health);
+}
 
 
 
