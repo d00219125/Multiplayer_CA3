@@ -1,9 +1,9 @@
-class Mouse : public GameObject
+class Zombie : public GameObject
 {
 public:
-	CLASS_IDENTIFICATION('MOUS', GameObject)
+	CLASS_IDENTIFICATION('ZOMB', GameObject)
 
-	enum EMouseReplicationState
+	enum EZombieReplicationState
 	{
 		EMRS_Pose = 1 << 0,
 		EMRS_Color = 1 << 1,
@@ -11,7 +11,7 @@ public:
 		EMRS_AllState = EMRS_Pose | EMRS_Color
 	};
 
-	static	GameObject* StaticCreate() { return new Mouse(); }
+	static	GameObject* StaticCreate() { return new Zombie(); }
 
 	virtual uint32_t	GetAllStateMask()	const override { return EMRS_AllState; }
 
@@ -21,6 +21,6 @@ public:
 	virtual bool HandleCollisionWithCat(RoboCat* inCat) override;
 
 protected:
-	Mouse();
+	Zombie();
 };
 

@@ -22,7 +22,7 @@ bool Client::StaticInit()
 Client::Client()
 {
 	GameObjectRegistry::sInstance->RegisterCreationFunction('RCAT', RoboCatClient::StaticCreate);
-	GameObjectRegistry::sInstance->RegisterCreationFunction('MOUS', MouseClient::StaticCreate);
+	GameObjectRegistry::sInstance->RegisterCreationFunction('ZOMB', ZombieClient::StaticCreate);
 	GameObjectRegistry::sInstance->RegisterCreationFunction('YARN', YarnClient::StaticCreate);
 
 	string destination = StringUtils::GetCommandLineArg(1);

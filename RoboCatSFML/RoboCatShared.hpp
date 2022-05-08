@@ -82,7 +82,7 @@ class GameObject;
 #include "RoboCat.hpp"
 #include "World.hpp"
 #include "Timing.hpp"
-#include "Mouse.hpp"
+#include "Zombie.hpp"
 #include "Yarn.hpp"
 #include "StringUtils.hpp"
 #include "ScoreBoardManager.hpp"

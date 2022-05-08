@@ -1,6 +1,4 @@
-#pragma once
-#include "ResourceHolder.hpp"
-#include "ResourceIdentifiers.hpp"
+#pragma once 
 
 #include <SFML/System/NonCopyable.hpp>
 #include <SFML/Audio/Music.hpp>

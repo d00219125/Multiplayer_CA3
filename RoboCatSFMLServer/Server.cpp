@@ -17,7 +17,7 @@ Server::Server()
 {
 
 	GameObjectRegistry::sInstance->RegisterCreationFunction('RCAT', RoboCatServer::StaticCreate);
-	GameObjectRegistry::sInstance->RegisterCreationFunction('MOUS', MouseServer::StaticCreate);
+	GameObjectRegistry::sInstance->RegisterCreationFunction('ZOMB', ZombieServer::StaticCreate);
 	GameObjectRegistry::sInstance->RegisterCreationFunction('YARN', YarnServer::StaticCreate);
 
 	InitNetworkManager();
@@ -52,18 +52,18 @@ bool Server::InitNetworkManager()
 namespace
 {
 
-	void CreateRandomMice(int inMouseCount)
+	void CreateRandomMice(int inZombieCount)
 	{
-		Vector3 mouseMin(100.f, 100.f, 0.f);
-		Vector3 mouseMax(1180.f, 620.f, 0.f);
+		Vector3 ZombieMin(100.f, 100.f, 0.f);
+		Vector3 ZombieMax(1180.f, 620.f, 0.f);
 		GameObjectPtr go;
 
-		//make a mouse somewhere- where will these come from?
-		for (int i = 0; i < inMouseCount; ++i)
+		//make a Zombie somewhere- where will these come from?
+		for (int i = 0; i < inZombieCount; ++i)
 		{
-			go = GameObjectRegistry::sInstance->CreateGameObject('MOUS');
-			Vector3 mouseLocation = RoboMath::GetRandomVector(mouseMin, mouseMax);
-			go->SetLocation(mouseLocation);
+			go = GameObjectRegistry::sInstance->CreateGameObject('ZOMB');
+			Vector3 ZombieLocation = RoboMath::GetRandomVector(ZombieMin, ZombieMax);
+			go->SetLocation(ZombieLocation);
 		}
 	}
 

@@ -164,7 +164,7 @@
     <ClInclude Include="InputState.hpp" />
     <ClInclude Include="LinkingContext.hpp" />
     <ClInclude Include="MemoryBitStream.hpp" />
-    <ClInclude Include="Mouse.hpp" />
+    <ClInclude Include="Zombie.hpp" />
     <ClInclude Include="Move.hpp" />
     <ClInclude Include="MoveList.hpp" />
     <ClInclude Include="MusicPlayer.hpp" />
@@ -197,7 +197,7 @@
     <ClCompile Include="InFlightPacket.cpp" />
     <ClCompile Include="InputState.cpp" />
     <ClCompile Include="MemoryBitStream.cpp" />
-    <ClCompile Include="Mouse.cpp" />
+    <ClCompile Include="Zombie.cpp" />
     <ClCompile Include="Move.cpp" />
     <ClCompile Include="MoveList.cpp" />
     <ClCompile Include="MusicPlayer.cpp" />

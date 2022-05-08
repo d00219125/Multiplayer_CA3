@@ -1,20 +1,20 @@
 #include "RoboCatPCH.hpp"
 
-Mouse::Mouse()
+Zombie::Zombie()
 {
-	SetScale(GetScale() * 1.0f);
+	SetScale(GetScale() * 0.2f);
 	SetCollisionRadius(20.f);
 }
 
 
-bool Mouse::HandleCollisionWithCat(RoboCat* inCat)
+bool Zombie::HandleCollisionWithCat(RoboCat* inCat)
 {
 	(void)inCat;
 	return false;
 }
 
 
-uint32_t Mouse::Write(OutputMemoryBitStream& inOutputStream, uint32_t inDirtyState) const
+uint32_t Zombie::Write(OutputMemoryBitStream& inOutputStream, uint32_t inDirtyState) const
 {
 	uint32_t writtenState = 0;
 
@@ -52,7 +52,7 @@ uint32_t Mouse::Write(OutputMemoryBitStream& inOutputStream, uint32_t inDirtySta
 	return writtenState;
 }
 
-void Mouse::Read(InputMemoryBitStream& inInputStream)
+void Zombie::Read(InputMemoryBitStream& inInputStream)
 {
 	bool stateBit;
 

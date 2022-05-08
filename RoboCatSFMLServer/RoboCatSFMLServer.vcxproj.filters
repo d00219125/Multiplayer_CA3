@@ -21,9 +21,6 @@
     <ClInclude Include="RoboCatServerPCH.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="MouseServer.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="NetworkManagerServer.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -42,15 +39,15 @@
     <ClInclude Include="ReplicationManagerTransmissionData.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="ZombieServer.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ClientProxy.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="RoboCatServerPCH.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="MouseServer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="NetworkManagerServer.cpp">
@@ -72,6 +69,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="ReplicationManagerTransmissionData.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ZombieServer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
