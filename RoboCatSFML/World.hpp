@@ -12,6 +12,8 @@ public:
 
 	void AddGameObject(GameObjectPtr inGameObject);
 	void RemoveGameObject(GameObjectPtr inGameObject);
+	//void FindGameObjects(GameObjectPtr inGameObject);
+	void SetZombieTarget();
 
 	void Update();
 

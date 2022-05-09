@@ -39,6 +39,22 @@ void World::RemoveGameObject(GameObjectPtr inGameObject)
 	mGameObjects.pop_back();
 }
 
+//void World::FindGameObjects(GameObjectPtr inGameObject) 
+//{
+//	int index = inGameObject->GetIndexInWorld();
+//	RoboCat r();
+//	int lastIndex = mGameObjects.size() - 1;
+//	if (index != lastIndex)
+//	{
+//		if (m == inGameObject) {}
+//		mGameObjects[index] = mGameObjects[lastIndex];
+//		mGameObjects[index]->SetIndexInWorld(index);
+//	}
+//
+//	inGameObject->SetIndexInWorld(-1);
+//
+//	mGameObjects.pop_back();
+//}
 
 void World::Update()
 {

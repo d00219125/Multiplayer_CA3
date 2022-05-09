@@ -39,7 +39,16 @@ void ZombieServer::TakeDamage(int inDamagingZombie)
 
 	}
 
-	NetworkManagerServer::sInstance->SetStateDirty(GetNetworkId(), ECRS_Health);
+	//static_cast<ZombieServer*>(inCat)->TakeDamage(GetPlayerId());
+
+	//NetworkManagerServer::sInstance->SetStateDirty(GetNetworkId(), ZRS_Health);
+}
+
+void ZombieServer::SetTarget(RoboCat* r)
+{
+	mTargetLocation = r->GetLocation();
+	hasTarget = true;
+	NetworkManagerServer::sInstance->SetStateDirty(GetNetworkId(), ZRS_Behaviour);
 }
 
 

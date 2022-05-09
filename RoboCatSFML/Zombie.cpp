@@ -17,6 +17,7 @@ bool Zombie::HandleCollisionWithCat(RoboCat* inCat)
 void Zombie::Update()
 {
 	ProcessCollisions();
+	MoveTowardsTarget();
 }
 
 
@@ -95,11 +96,36 @@ void Zombie::ProcessCollisions()
 
 }
 
+void Zombie::MoveTowardsTarget(float inDeltaTime)
+{
+	Vector3 ZombiPos =  this->GetLocation();
+	Vector3 forwardVector = GetForwardVector();
+	mVelocity = forwardVector * (mTargetLocation * inDeltaTime * mMaxLinearSpeed);
+}
+
+void Zombie::SetTarget(RoboCat *r)
+{
+	//mTargetLocation = r->GetLocation();
+	//hasTarget = true;
+	//NetworkManagerServer::sInstance->SetStateDirty(GetNetworkId(), ZRS_Behaviour);
+}
+
+void Zombie::MoveTowardsTarget()
+{
+	if(hasTarget)
+		;
+}
+
+bool Zombie::GetHasTarget()
+{
+	return hasTarget;
+}
+
 uint32_t Zombie::Write(OutputMemoryBitStream& inOutputStream, uint32_t inDirtyState) const
 {
 	uint32_t writtenState = 0;
 
-	if (inDirtyState & EMRS_Pose)
+	if (inDirtyState & ZRS_Pose)
 	{
 		inOutputStream.Write((bool)true);
 
@@ -109,20 +135,37 @@ uint32_t Zombie::Write(OutputMemoryBitStream& inOutputStream, uint32_t inDirtySt
 
 		inOutputStream.Write(GetRotation());
 
-		writtenState |= EMRS_Pose;
+
+		writtenState |= ZRS_Pose;
 	}
 	else
 	{
 		inOutputStream.Write((bool)false);
 	}
 
-	if (inDirtyState & EMRS_Color)
+	if (inDirtyState & ZRS_Color)
 	{
 		inOutputStream.Write((bool)true);
 
 		inOutputStream.Write(GetColor());
 
-		writtenState |= EMRS_Color;
+		writtenState |= ZRS_Color;
+	}
+	else
+	{
+		inOutputStream.Write((bool)false);
+	}
+
+	if (inDirtyState & ZRS_Behaviour)
+	{
+		inOutputStream.Write(true);
+
+		inOutputStream.Write(mTargetLocation.mX);
+		inOutputStream.Write(mTargetLocation.mY);
+
+		inOutputStream.Write(hasTarget);
+
+		writtenState |= ZRS_Behaviour;
 	}
 	else
 	{
@@ -157,6 +200,15 @@ void Zombie::Read(InputMemoryBitStream& inInputStream)
 		Vector3 color;
 		inInputStream.Read(color);
 		SetColor(color);
+	}
+
+	inInputStream.Read(stateBit);
+	if ( stateBit)
+	{
+		inInputStream.Read(mTargetLocation.mX);
+		inInputStream.Read(mTargetLocation.mY);
+		inInputStream.Read(hasTarget);
+
 	}
 }
 

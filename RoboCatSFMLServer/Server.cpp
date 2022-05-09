@@ -66,8 +66,6 @@ namespace
 			go->SetLocation(ZombieLocation);
 		}
 	}
-
-
 }
 
 
@@ -75,6 +73,7 @@ void Server::SetupWorld()
 {
 	//spawn some random mice
 	CreateRandomMice(10);
+	//SetZombieTarget();
 
 	//spawn more random mice!
 	//CreateRandomMice(10);
@@ -110,6 +109,38 @@ void Server::SpawnCatForPlayer(int inPlayerId)
 	cat->SetPlayerId(inPlayerId);
 	//gotta pick a better spawn location than this...
 	cat->SetLocation(Vector3(600.f - static_cast<float>(inPlayerId), 400.f, 0.f));
+	SetZombieTarget();
+
+}
+
+void Server::SetZombieTarget()
+{
+//	ZombiePtr zombie = std::static_pointer_cast<Zombie>();
+		std::vector<RoboCat*> players;
+		std::vector<Zombie*> zombies;
+		const auto & gameObjects = World::sInstance->GetGameObjects();
+		//populate the Vectors with zombies and players
+		for (int i = 0; i < gameObjects.size(); ++i) 
+		{
+			GameObjectPtr go = gameObjects[i];
+			Zombie* zom = go->GetAsZombie();
+			if (zom) 
+			{
+				zombies.push_back(zom);
+			}
+			RoboCat* player = go->GetAsCat();
+			if (player) 
+			{
+				players.push_back(player);
+			}
+		}
+		//assigns player as zombies target
+		for (int i = 0; i < zombies.size(); i++) 
+		{
+			RoboCat *player = players[rand() % players.size()];
+			zombies[i]->SetTarget(player);
+			LOG("Zombie Targeted ", 0);
+		}
 }
 
 void Server::HandleLostClient(ClientProxyPtr inClientProxy)
@@ -128,7 +159,7 @@ void Server::HandleLostClient(ClientProxyPtr inClientProxy)
 
 RoboCatPtr Server::GetCatForPlayer(int inPlayerId)
 {
-	//run through the objects till we find the cat...
+	//run through the objects till we find the player...
 	//it would be nice if we kept a pointer to the cat on the clientproxy
 	//but then we'd have to clean it up when the cat died, etc.
 	//this will work for now until it's a perf issue
@@ -142,7 +173,6 @@ RoboCatPtr Server::GetCatForPlayer(int inPlayerId)
 			return std::static_pointer_cast<RoboCat>(go);
 		}
 	}
-
 	return nullptr;
 
 }

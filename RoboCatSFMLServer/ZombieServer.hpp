@@ -8,6 +8,9 @@ public:
 
 	void TakeDamage(int inDamagingZombie);
 
+	void SetTarget(RoboCat* r) override;
+
+
 protected:
 	ZombieServer();
 };

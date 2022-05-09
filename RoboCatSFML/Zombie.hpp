@@ -3,19 +3,20 @@ class Zombie : public GameObject
 public:
 	CLASS_IDENTIFICATION('ZOMB', GameObject)
 
-	enum EZombieReplicationState
+	enum ZombieReplicationState
 	{
-		EMRS_Pose = 1 << 0,
-		EMRS_Color = 1 << 1,
-		EYRS_PlayerId = 1 << 2,
-		ECRS_Health = 1 << 1,
+		ZRS_Pose = 1 << 0,
+		ZRS_Color = 1 << 1,
+		ZRS_Behaviour = 1<<4,
 
-		EMRS_AllState = EMRS_Pose | EMRS_Color | EYRS_PlayerId | ECRS_Health
+		ZRS_AllState = ZRS_Pose | ZRS_Color   | ZRS_Behaviour
 	};
 
 	static	GameObject* StaticCreate() { return new Zombie(); }
 
-	virtual uint32_t	GetAllStateMask()	const override { return EMRS_AllState; }
+	virtual uint32_t	GetAllStateMask()	const override { return ZRS_AllState; }
+
+	virtual Zombie* GetAsZombie() override { return this; }
 
 	virtual uint32_t	Write(OutputMemoryBitStream& inOutputStream, uint32_t inDirtyState) const override;
 	virtual void		Read(InputMemoryBitStream& inInputStream) override;
@@ -30,6 +31,13 @@ public:
 
 	void ProcessCollisions();
 
+	void MoveTowardsTarget(float inDeltaTime);
+	virtual void SetTarget(RoboCat *r);
+	
+	void MoveTowardsTarget();
+
+	bool GetHasTarget();
+
 	virtual bool HandleCollisionWithCat(RoboCat* inCat) override;
 
 protected:
@@ -38,11 +46,17 @@ protected:
 	int			mPlayerId;
 	int			mHealth;
 
-private:
 
 	Vector3				mVelocity;
 
 	float				mWallRestitution;
 	float				mCatRestitution;
+
+	Vector3 mTargetLocation;
+	float				mMaxLinearSpeed = 300;
+	bool hasTarget = false;
+
+
 };
+typedef shared_ptr< Zombie >	ZombiePtr;
 
