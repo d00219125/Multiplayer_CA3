@@ -1,11 +1,14 @@
 #include "RoboCatShared.hpp"
 
 #include "SFML\Graphics.hpp"
+#include "SFML/Audio.hpp"
 
 #include "InputManager.hpp"
 #include "SpriteComponent.hpp"
 #include "PlayerSpriteComponent.hpp"
+#include "AudioComponent.hpp"
 #include "TextureManager.hpp"
+#include "SoundManager.hpp"
 #include "FontManager.hpp"
 #include "RenderManager.hpp"
 #include "WindowManager.hpp"

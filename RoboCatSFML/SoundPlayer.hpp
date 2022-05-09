@@ -12,6 +12,7 @@ public:
 
 
 private:
+	sf::SoundBuffer m_sound_buffers;
 	//SoundBufferHolder m_sound_buffers;
 	std::list<sf::Sound> m_sounds;
 };

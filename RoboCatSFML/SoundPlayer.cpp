@@ -13,7 +13,7 @@ namespace
 
 SoundPlayer::SoundPlayer()
 {
-	//m_sound_buffers.Load(SoundEffect::kGunfire, "Media/Sound/Throw.ogg");
+	m_sound_buffers.Load(SoundEffect::kGunfire, "Media/Sound/Gun.ogg");
 	//m_sound_buffers.Load(SoundEffect::kSplatter1, "Media/Sound/Death.ogg");
 	//m_sound_buffers.Load(SoundEffect::kSplatter2, "Media/Sound/Death.ogg");
 	//m_sound_buffers.Load(SoundEffect::kCollectPickup, "Media/Sound/Pickup.ogg");

@@ -46,4 +46,3 @@ void YarnClient::Read(InputMemoryBitStream& inInputStream)
 	}
 
 }
-
