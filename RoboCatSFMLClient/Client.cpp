@@ -10,7 +10,7 @@ bool Client::StaticInit()
 	FontManager::StaticInit();
 	TextureManager::StaticInit();
 	RenderManager::StaticInit();
-	
+	SoundManager::StaticInit();
 
 	HUD::StaticInit();
 
@@ -33,6 +33,7 @@ Client::Client()
 	NetworkManagerClient::StaticInit(*serverAddress, name);
 
 	//NetworkManagerClient::sInstance->SetSimulatedLatency(0.0f);
+	SoundManager::sInstance->PlayMusic();
 }
 
 

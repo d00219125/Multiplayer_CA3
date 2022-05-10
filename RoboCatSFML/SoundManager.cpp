@@ -9,8 +9,11 @@ void SoundManager::StaticInit()
 
 SoundManager::SoundManager()
 {
-	//error loading from file; read access violation
-	LoadSoundFromFile(shoot, shootB, "../Assets/shoot.wav");
+	LoadSoundFromFile(shoot, shootB, "../Assets/Pistol.wav");
+	LoadSoundFromFile(death, deathB, "../Assets/Splatter.wav");
+	LoadSoundFromFile(music, musicB, "../Assets/MissionTheme.wav");
+	//LoadMusicFromFile(bgMusic, "../Assets/MissionTheme.wav");
+
 }
 
 void SoundManager::LoadSoundFromFile(sf::Sound& p_sound, sf::SoundBuffer& p_buffer, string p_file)
@@ -31,11 +34,13 @@ void SoundManager::LoadMusicFromFile(sf::Music& p_music, string p_file)
 
 void SoundManager::PlayMusic()
 {
-	bgMusic.play();
+	//bgMusic.play();
 }
 
 void SoundManager::PlaySound(SoundToPlay p_sound)
 {
+	
+
 	switch (p_sound)
 	{
 	//case SoundManager::STP_Pickup:
@@ -45,10 +50,14 @@ void SoundManager::PlaySound(SoundToPlay p_sound)
 	case SoundManager::STP_Shoot:
 		shoot.play();
 		break;
-	//case SoundManager::STP_Death:
-	//	death.setRelativeToListener(true);
-	//	death.play();
-	//	break;
+
+	case SoundManager::STP_Music:
+		music.play();
+		break;
+	case SoundManager::STP_Death:
+		death.setRelativeToListener(true);
+		death.play();
+		break;
 	}
 }
 

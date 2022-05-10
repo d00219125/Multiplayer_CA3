@@ -8,7 +8,9 @@ public:
 	enum SoundToPlay {
 		STP_Pickup = 1 << 0,
 		STP_Shoot = 1 << 1,
-		STP_Death = 1 << 2
+		STP_Death = 1 << 2,
+		STP_Music = 1 << 3
+
 
 	};
 	void PlaySound(SoundToPlay p_sound);
@@ -18,11 +20,11 @@ public:
 private:
 	SoundManager();
 
-	sf::Sound pickup, shoot, death, join;
-	sf::SoundBuffer picukupB, shootB, deathB, joinB;
-	sf::Music bgMusic;
+	sf::Sound pickup, shoot, death, join, music;
+	sf::SoundBuffer picukupB, shootB, deathB, joinB, musicB;
+	//sf::Music bgMusic;
 	void LoadSoundFromFile(sf::Sound& p_sound, sf::SoundBuffer& p_buffer, string p_file);
 	void LoadMusicFromFile(sf::Music& p_music, string p_file);
 
-	sf::SoundBuffer soundBuffer;
+	//sf::SoundBuffer soundBuffer;
 };
