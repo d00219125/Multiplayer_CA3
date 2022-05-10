@@ -10,6 +10,8 @@ public:
 
 	void SetTarget(RoboCat* r) override;
 
+	void MoveTowardsTarget(float time) override;
+
 
 protected:
 	ZombieServer();

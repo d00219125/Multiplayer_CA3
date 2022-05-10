@@ -17,7 +17,8 @@ bool Zombie::HandleCollisionWithCat(RoboCat* inCat)
 void Zombie::Update()
 {
 	ProcessCollisions();
-	MoveTowardsTarget();
+	float t = Timing::sInstance.GetDeltaTime();
+	MoveTowardsTarget(t);
 }
 
 
@@ -96,24 +97,30 @@ void Zombie::ProcessCollisions()
 
 }
 
-void Zombie::MoveTowardsTarget(float inDeltaTime)
-{
-	Vector3 ZombiPos =  this->GetLocation();
-	Vector3 forwardVector = GetForwardVector();
-	mVelocity = forwardVector * (mTargetLocation * inDeltaTime * mMaxLinearSpeed);
-}
+
 
 void Zombie::SetTarget(RoboCat *r)
 {
 	//mTargetLocation = r->GetLocation();
 	//hasTarget = true;
+	//NetworkManagerServer
 	//NetworkManagerServer::sInstance->SetStateDirty(GetNetworkId(), ZRS_Behaviour);
 }
 
-void Zombie::MoveTowardsTarget()
+void Zombie::MoveTowardsTarget(float inDeltaTime)
 {
-	if(hasTarget)
-		;
+	if (hasTarget)
+	{
+
+		//Vector3 GoalPosition = ; 
+		//mVelocity += GoalPosition;
+		Vector3 inputForwardDelta =  this->GetLocation() - mTrackedPlayer->GetLocation();
+		//Vector3 thrustDirection = inputForwardDelta;
+		//adjust by thrust
+		Vector3 forwardVector = GetForwardVector();
+		mVelocity = /*forwardVector **/ (inputForwardDelta * inDeltaTime *-.05/** mMaxLinearSpeed*/);
+		SetLocation(GetLocation() + mVelocity );
+	}
 }
 
 bool Zombie::GetHasTarget()
@@ -160,9 +167,9 @@ uint32_t Zombie::Write(OutputMemoryBitStream& inOutputStream, uint32_t inDirtySt
 	{
 		inOutputStream.Write(true);
 
-		inOutputStream.Write(mTargetLocation.mX);
-		inOutputStream.Write(mTargetLocation.mY);
-
+		//inOutputStream.Write(mTargetLocation.mX);
+		//inOutputStream.Write(mTargetLocation.mY);
+		inOutputStream.Write(mTrackedPlayer->GetPlayerId());
 		inOutputStream.Write(hasTarget);
 
 		writtenState |= ZRS_Behaviour;
@@ -205,8 +212,21 @@ void Zombie::Read(InputMemoryBitStream& inInputStream)
 	inInputStream.Read(stateBit);
 	if ( stateBit)
 	{
-		inInputStream.Read(mTargetLocation.mX);
-		inInputStream.Read(mTargetLocation.mY);
+		//inInputStream.Read(mTargetLocation.mX);
+		//inInputStream.Read(mTargetLocation.mY);
+		
+		int playerNetId = 0;
+		inInputStream.Read(playerNetId);
+		const auto& gameObjects = World::sInstance->GetGameObjects();
+		for (GameObjectPtr r : gameObjects) 
+		{
+			if (r->GetAsCat()->GetPlayerId() == playerNetId) 
+			{
+				mTrackedPlayer = r->GetAsCat();
+				break;
+			}
+		}
+		
 		inInputStream.Read(hasTarget);
 
 	}

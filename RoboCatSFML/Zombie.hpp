@@ -31,12 +31,11 @@ public:
 
 	void ProcessCollisions();
 
-	void MoveTowardsTarget(float inDeltaTime);
+	virtual void MoveTowardsTarget(float inDeltaTime);
 	virtual void SetTarget(RoboCat *r);
-	
-	void MoveTowardsTarget();
 
-	bool GetHasTarget();
+
+	virtual bool GetHasTarget();
 
 	virtual bool HandleCollisionWithCat(RoboCat* inCat) override;
 
@@ -46,17 +45,15 @@ protected:
 	int			mPlayerId;
 	int			mHealth;
 
-
 	Vector3				mVelocity;
 
 	float				mWallRestitution;
 	float				mCatRestitution;
 
 	Vector3 mTargetLocation;
-	float				mMaxLinearSpeed = 300;
+	RoboCat *mTrackedPlayer;
+	float	mMaxLinearSpeed =30;
 	bool hasTarget = false;
-
-
+	
 };
 typedef shared_ptr< Zombie >	ZombiePtr;
-

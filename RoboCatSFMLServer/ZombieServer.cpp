@@ -48,9 +48,19 @@ void ZombieServer::SetTarget(RoboCat* r)
 {
 	mTargetLocation = r->GetLocation();
 	hasTarget = true;
+	mTrackedPlayer = r;
 	NetworkManagerServer::sInstance->SetStateDirty(GetNetworkId(), ZRS_Behaviour);
+	
 }
 
 
-
+void ZombieServer::MoveTowardsTarget(float time)
+{
+	Vector3 oldPos = GetLocation();
+	Zombie::MoveTowardsTarget(time);
+	if (!RoboMath::Is2DVectorEqual(oldPos, GetLocation())) 
+	{
+		NetworkManagerServer::sInstance->SetStateDirty(GetNetworkId(), ZRS_Pose);
+	}
+}
 

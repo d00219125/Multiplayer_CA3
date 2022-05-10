@@ -30,13 +30,14 @@ Server::Server()
 		latency = stof(latencyString);
 	}
 	NetworkManagerServer::sInstance->SetSimulatedLatency(latency);
+	timePassed = 0;
 }
 
 
 int Server::Run()
 {
 	SetupWorld();
-
+	//delay.restart();
 	return Engine::Run();
 }
 
@@ -65,6 +66,7 @@ namespace
 			Vector3 ZombieLocation = RoboMath::GetRandomVector(ZombieMin, ZombieMax);
 			go->SetLocation(ZombieLocation);
 		}
+		
 	}
 }
 
@@ -72,7 +74,7 @@ namespace
 void Server::SetupWorld()
 {
 	//spawn some random mice
-	CreateRandomMice(10);
+	//CreateRandomMice(10);
 	//SetZombieTarget();
 
 	//spawn more random mice!
@@ -91,6 +93,13 @@ void Server::DoFrame()
 
 	NetworkManagerServer::sInstance->SendOutgoingPackets();
 
+	timePassed += Timing::sInstance.GetDeltaTime();
+	if (timePassed < 200 && timePassed > 15)
+	{
+		timePassed = 201;
+		CreateRandomMice(10);
+		SetZombieTarget();
+	}
 }
 
 void Server::HandleNewClient(ClientProxyPtr inClientProxy)
@@ -100,6 +109,7 @@ void Server::HandleNewClient(ClientProxyPtr inClientProxy)
 
 	ScoreBoardManager::sInstance->AddEntry(playerId, inClientProxy->GetName());
 	SpawnCatForPlayer(playerId);
+	//CreateRandomMice(10);
 }
 
 void Server::SpawnCatForPlayer(int inPlayerId)
@@ -109,7 +119,7 @@ void Server::SpawnCatForPlayer(int inPlayerId)
 	cat->SetPlayerId(inPlayerId);
 	//gotta pick a better spawn location than this...
 	cat->SetLocation(Vector3(600.f - static_cast<float>(inPlayerId), 400.f, 0.f));
-	SetZombieTarget();
+	//SetZombieTarget();
 
 }
 
@@ -137,7 +147,8 @@ void Server::SetZombieTarget()
 		//assigns player as zombies target
 		for (int i = 0; i < zombies.size(); i++) 
 		{
-			RoboCat *player = players[rand() % players.size()];
+			int choice = rand() % players.size();
+			RoboCat* player = players[choice ];
 			zombies[i]->SetTarget(player);
 			LOG("Zombie Targeted ", 0);
 		}
@@ -173,6 +184,7 @@ RoboCatPtr Server::GetCatForPlayer(int inPlayerId)
 			return std::static_pointer_cast<RoboCat>(go);
 		}
 	}
+	SetZombieTarget();
 	return nullptr;
 
 }

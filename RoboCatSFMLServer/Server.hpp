@@ -22,5 +22,12 @@ private:
 	bool	InitNetworkManager();
 	void	SetupWorld();
 
+	bool PeopleIn = false;
+	float timePassed;
+	//std::vector<RoboCat*> players;
+	//std::vector<Zombie*> zombies;
+	//sf::Clock delay;
+	//sf::Time time;
+
 };
 
