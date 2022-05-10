@@ -89,10 +89,13 @@ void ReplicationManagerClient::ReadAndDoDestroyAction(InputMemoryBitStream& inIn
 	GameObjectPtr gameObject = NetworkManagerClient::sInstance->GetGameObject(inNetworkId);
 	if (gameObject)
 	{
-		if (gameObject->GetClassId() == 'RCAT' || gameObject->GetClassId() == 'ZOMB') {
+		if (gameObject->GetClassId() == 'ZOMB') {
 			SoundManager::sInstance->PlaySound(SoundManager::SoundToPlay::STP_Death);
 		}
 
+		if (gameObject->GetClassId() == 'RCAT') {
+			SoundManager::sInstance->PlaySound(SoundManager::SoundToPlay::STP_Death2);
+		}
 
 
 		gameObject->SetDoesWantToDie(true);

@@ -9,7 +9,9 @@ HUD::HUD() :
 	mRoundTripTimeOrigin(980.f, 10.f, 0.0f),
 	mScoreOffset(0.f, 50.f, 0.0f),
 	mHealthOffset(1700, 10.f, 0.0f),
-	mHealth(0)
+	mAmmoOffset(1700, 50.f, 0.0f),
+	mHealth(0),
+	mAmmo(0)
 {
 }
 
@@ -25,6 +27,7 @@ void HUD::Render()
 	RenderRoundTripTime();
 	RenderScoreBoard();
 	RenderHealth();
+	RenderAmmo();
 }
 
 void HUD::RenderHealth()
@@ -34,6 +37,12 @@ void HUD::RenderHealth()
 		string healthString = StringUtils::Sprintf("Health %d", mHealth);
 		RenderText(healthString, mHealthOffset, Colors::Red);
 	}
+}
+
+void HUD::RenderAmmo()
+{
+		string ammoString = StringUtils::Sprintf("Ammo %d", mAmmo);
+		RenderText(ammoString, mAmmoOffset, Colors::Green);
 }
 
 void HUD::RenderBandWidth()

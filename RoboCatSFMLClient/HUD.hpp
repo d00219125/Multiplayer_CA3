@@ -10,6 +10,7 @@ public:
 	void Render();
 
 	void SetPlayerHealth(int inHealth) { mHealth = inHealth; }
+	void SetPlayerAmmo(int inAmmo) { mAmmo = inAmmo; }
 
 private:
 
@@ -19,6 +20,7 @@ private:
 	void	RenderRoundTripTime();
 	void	RenderScoreBoard();
 	void	RenderHealth();
+	void	RenderAmmo();
 	void	RenderText(const string& inStr, const Vector3& origin, const Vector3& inColor);
 
 	Vector3										mBandwidthOrigin;
@@ -26,7 +28,9 @@ private:
 	Vector3										mScoreBoardOrigin;
 	Vector3										mScoreOffset;
 	Vector3										mHealthOffset;
+	Vector3										mAmmoOffset;
 	int											mHealth;
+	int											mAmmo;
 };
 
 

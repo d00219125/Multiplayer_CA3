@@ -12,6 +12,7 @@ SoundManager::SoundManager()
 	LoadSoundFromFile(shoot, shootB, "../Assets/Pistol.wav");
 	LoadSoundFromFile(death, deathB, "../Assets/Splatter.wav");
 	LoadSoundFromFile(music, musicB, "../Assets/MissionTheme.wav");
+	LoadSoundFromFile(death2, death2B, "../Assets/death.wav");
 	//LoadMusicFromFile(bgMusic, "../Assets/MissionTheme.wav");
 
 }
@@ -57,6 +58,11 @@ void SoundManager::PlaySound(SoundToPlay p_sound)
 	case SoundManager::STP_Death:
 		death.setRelativeToListener(true);
 		death.play();
+		break;
+
+	case SoundManager::STP_Death2:
+		death2.setRelativeToListener(true);
+		death2.play();
 		break;
 	}
 }

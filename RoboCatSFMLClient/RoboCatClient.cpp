@@ -124,6 +124,14 @@ void RoboCatClient::Read(InputMemoryBitStream& inInputStream)
 		readState |= ECRS_Health;
 	}
 
+	inInputStream.Read(stateBit);
+	if (stateBit)
+	{
+		mAmmo = 0;
+		inInputStream.Read(mAmmo, 4);
+		readState |= ECRS_Ammo;
+	}
+
 	if (GetPlayerId() == NetworkManagerClient::sInstance->GetPlayerId())
 	{
 		//did we get health? if so, tell the hud!
