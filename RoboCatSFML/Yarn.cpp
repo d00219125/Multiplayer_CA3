@@ -95,8 +95,6 @@ bool Yarn::HandleCollisionWithCat(RoboCat* inCat)
 bool Yarn::HandleCollisionWithZombie(Zombie* inZombie)
 {
 	(void)inZombie;
-	SoundPlayer SPLayer;
-	SPLayer.Play(SoundEffect::kSplatter1);
 
 	return false;
 }

@@ -42,8 +42,6 @@
     <ClCompile Include="FontManager.cpp" />
     <ClCompile Include="HUD.cpp" />
     <ClCompile Include="InputManager.cpp" />
-    <ClCompile Include="SoundManager.cpp" />
-    <ClCompile Include="SoundManager.hpp" />
     <ClCompile Include="ZombieClient.cpp" />
     <ClCompile Include="NetworkManagerClient.cpp" />
     <ClCompile Include="PlayerSpriteComponent.cpp" />

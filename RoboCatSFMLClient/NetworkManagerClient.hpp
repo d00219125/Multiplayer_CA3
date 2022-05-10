@@ -1,3 +1,6 @@
+
+
+
 class NetworkManagerClient : public NetworkManager
 {
 	enum NetworkClientState
@@ -40,7 +43,8 @@ private:
 	void	DestroyGameObjectsInMap(const IntToGameObjectMap& inObjectsToDestroy);
 
 
-	DeliveryNotificationManager mDeliveryNotificationManager;
+
+	DeliveryNotificationManager	mDeliveryNotificationManager;
 	ReplicationManagerClient	mReplicationManagerClient;
 
 	SocketAddress		mServerAddress;
@@ -59,4 +63,3 @@ private:
 	float						mLastRoundTripTime;
 
 };
-

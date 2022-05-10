@@ -164,9 +164,7 @@
     <ClInclude Include="InputState.hpp" />
     <ClInclude Include="LinkingContext.hpp" />
     <ClInclude Include="MemoryBitStream.hpp" />
-    <ClInclude Include="SoundEffect.hpp" />
-    <ClInclude Include="SoundNode.hpp" />
-    <ClInclude Include="SoundPlayer.hpp" />
+    <ClInclude Include="SoundManager.hpp" />
     <ClInclude Include="Zombie.hpp" />
     <ClInclude Include="Move.hpp" />
     <ClInclude Include="MoveList.hpp" />
@@ -200,8 +198,7 @@
     <ClCompile Include="InFlightPacket.cpp" />
     <ClCompile Include="InputState.cpp" />
     <ClCompile Include="MemoryBitStream.cpp" />
-    <ClCompile Include="SoundNode.cpp" />
-    <ClCompile Include="SoundPlayer.cpp" />
+    <ClCompile Include="SoundManager.cpp" />
     <ClCompile Include="Zombie.cpp" />
     <ClCompile Include="Move.cpp" />
     <ClCompile Include="MoveList.cpp" />
