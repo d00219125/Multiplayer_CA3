@@ -2,10 +2,21 @@
 
 std::unique_ptr< RenderManager >	RenderManager::sInstance;
 
-RenderManager::RenderManager()
+RenderManager::RenderManager() : mSprite()
 {
 	view.reset(sf::FloatRect(0, 0, 1920, 1080));
+	//view.setCenter()
 	WindowManager::sInstance->setView(view);
+
+	TexturePtr texture = TextureManager::sInstance->GetTexture("bg");
+	auto tSize = texture->getSize();
+	mSprite.setTexture(*texture);
+	mSprite.setOrigin(tSize.x / 2, tSize.y / 2);
+
+	//sf::IntRect rect = sf::IntRect(1, 1, tSize.x, tSize.y);
+	//mSprite.setTextureRect(rect);
+
+	mSprite.setPosition(960, 544);
 }
 
 
@@ -54,6 +65,7 @@ int RenderManager::GetComponentIndex(SpriteComponent* inComponent) const
 //render the cameras in order
 void RenderManager::RenderComponents()
 {
+	WindowManager::sInstance->draw(mSprite);
 	//Get the logical viewport so we can pass this to the SpriteComponents when it's draw time
 	for (SpriteComponent* c : mComponents)
 	{	
