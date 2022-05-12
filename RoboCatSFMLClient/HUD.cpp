@@ -27,7 +27,7 @@ void HUD::Render()
 	RenderRoundTripTime();
 	RenderScoreBoard();
 	RenderHealth();
-	RenderAmmo();
+	//RenderAmmo();
 }
 
 void HUD::RenderHealth()
