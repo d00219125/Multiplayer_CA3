@@ -13,6 +13,7 @@ TextureManager::TextureManager()
 	CacheTexture("Zombie", "../Assets/zombie.png");
 	CacheTexture("yarn", "../Assets/bullet.png");
 	CacheTexture("bg", "../Assets/bg.png");
+	CacheTexture("heart", "../Assets/heart.png");
 }
 
 TexturePtr	TextureManager::GetTexture(const string& inTextureName)

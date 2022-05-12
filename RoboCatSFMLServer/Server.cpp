@@ -97,8 +97,8 @@ void Server::DoFrame()
 	if (timePassed < 200 && timePassed > 15)
 	{
 		timePassed = 201;
-		/*CreateRandomMice(10);
-		SetZombieTarget();*/
+		CreateRandomMice(10);
+		SetZombieTarget();
 	}
 }
 

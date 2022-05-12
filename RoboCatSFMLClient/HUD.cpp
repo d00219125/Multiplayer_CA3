@@ -37,6 +37,13 @@ void HUD::RenderHealth()
 		string healthString = StringUtils::Sprintf("Health %d", mHealth);
 		RenderText(healthString, mHealthOffset, Colors::Red);
 	}
+
+	//TexturePtr texture = TextureManager::sInstance->GetTexture("heart");
+	//auto tSize = texture->getSize();
+	//mHeart.setTexture(*texture);
+	//mHeart.setOrigin(tSize.x / 2, tSize.y / 2);
+
+	//mHeart.setPosition(0, 0);
 }
 
 void HUD::RenderAmmo()

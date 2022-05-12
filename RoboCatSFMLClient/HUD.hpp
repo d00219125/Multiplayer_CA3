@@ -31,6 +31,8 @@ private:
 	Vector3										mAmmoOffset;
 	int											mHealth;
 	int											mAmmo;
+
+	//sf::Sprite mHeart;
 };
 
 

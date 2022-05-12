@@ -80,7 +80,7 @@ void RoboCatServer::TakeDamage(int inDamagingPlayerId)
 	if (mHealth <= 0.f)
 	{
 		//score one for damaging player...
-		ScoreBoardManager::sInstance->IncScore(inDamagingPlayerId, 1);
+		ScoreBoardManager::sInstance->IncScore(inDamagingPlayerId, 5);
 
 		//and you want to die
 		SetDoesWantToDie(true);
@@ -96,4 +96,3 @@ void RoboCatServer::TakeDamage(int inDamagingPlayerId)
 	//tell the world our health dropped
 	NetworkManagerServer::sInstance->SetStateDirty(GetNetworkId(), ECRS_Health);
 }
-
