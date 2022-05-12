@@ -24,6 +24,7 @@ private:
 
 	bool PeopleIn = false;
 	float timePassed;
+	float timeSinceLastSpawn;
 	//std::vector<RoboCat*> players;
 	//std::vector<Zombie*> zombies;
 	//sf::Clock delay;

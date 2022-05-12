@@ -31,6 +31,7 @@ Server::Server()
 	}
 	NetworkManagerServer::sInstance->SetSimulatedLatency(latency);
 	timePassed = 0;
+	timeSinceLastSpawn = 0;
 }
 
 
@@ -93,11 +94,13 @@ void Server::DoFrame()
 
 	NetworkManagerServer::sInstance->SendOutgoingPackets();
 
+	
 	timePassed += Timing::sInstance.GetDeltaTime();
-	if (timePassed < 200 && timePassed > 15)
+	timeSinceLastSpawn += Timing::sInstance.GetDeltaTime();
+	if (timePassed > 15 && (int)timeSinceLastSpawn > 15 )
 	{
-		timePassed = 201;
-		CreateRandomMice(10);
+		timeSinceLastSpawn = 0;
+		CreateRandomMice(6);
 		SetZombieTarget();
 	}
 }
@@ -145,12 +148,14 @@ void Server::SetZombieTarget()
 			}
 		}
 		//assigns player as zombies target
-		for (int i = 0; i < zombies.size(); i++) 
+		for (int i = 0; i < zombies.size(); i++)
 		{
-			int choice = rand() % players.size();
-			RoboCat* player = players[choice ];
-			zombies[i]->SetTarget(player);
-			LOG("Zombie Targeted ", 0);
+			if (players.size() > 0) {
+				int choice = rand() % players.size();
+				RoboCat* player = players[choice];
+				zombies[i]->SetTarget(player);
+				LOG("Zombie Targeted ", 0);
+			}
 		}
 }
 

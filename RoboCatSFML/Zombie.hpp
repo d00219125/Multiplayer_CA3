@@ -39,6 +39,7 @@ public:
 
 	virtual bool HandleCollisionWithCat(RoboCat* inCat) override;
 
+	virtual void StopTrackingDeadPlayers();
 protected:
 	Zombie();
 

@@ -12,6 +12,7 @@ public:
 
 	void MoveTowardsTarget(float time) override;
 
+	void StopTrackingDeadPlayers();
 
 protected:
 	ZombieServer();

@@ -64,3 +64,8 @@ void ZombieServer::MoveTowardsTarget(float time)
 	}
 }
 
+void ZombieServer::StopTrackingDeadPlayers()
+{
+	if (hasTarget && mTrackedPlayer->DoesWantToDie()) { hasTarget = false; SetDoesWantToDie(true); }
+}
+

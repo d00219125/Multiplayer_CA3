@@ -13,12 +13,19 @@ bool Zombie::HandleCollisionWithCat(RoboCat* inCat)
 	return false;
 }
 
+void Zombie::StopTrackingDeadPlayers()
+{
+	if (hasTarget && mTrackedPlayer->DoesWantToDie()) { hasTarget = false; }
+}
+
 
 void Zombie::Update()
 {
 	ProcessCollisions();
 	float t = Timing::sInstance.GetDeltaTime();
+	StopTrackingDeadPlayers();
 	MoveTowardsTarget(t);
+	
 }
 
 
