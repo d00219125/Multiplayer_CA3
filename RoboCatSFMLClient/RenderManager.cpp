@@ -7,6 +7,7 @@ RenderManager::RenderManager() : mSprite()
 	view.reset(sf::FloatRect(0, 0, 1920, 1080));
 	//view.setCenter()
 	WindowManager::sInstance->setView(view);
+	mGameOver.setTexture(*TextureManager::sInstance->GetTexture("gameOver"));
 
 	TexturePtr texture = TextureManager::sInstance->GetTexture("bg");
 	auto tSize = texture->getSize();
@@ -19,6 +20,45 @@ RenderManager::RenderManager() : mSprite()
 	mSprite.setPosition(960, 544);
 }
 
+//Center camera on player
+
+//void RenderManager::UpdateView()
+//{
+//
+//	float rate = .02f;
+//	if (FindCatCentre() != sf::Vector2f(-1, -1))
+//	{
+//		sf::Vector2f player = FindCatCentre();
+//		sf::Vector2f newCentre = view.getCenter() + ((player - view.getCenter()) * rate);
+//		view.setCenter(newCentre);
+//	}
+//	WindowManager::sInstance->setView(view);
+//}
+//
+//
+//sf::Vector2f RenderManager::FindCatCentre()
+//{
+//	uint32_t catID = (uint32_t)'RCAT';
+//	for (auto obj : World::sInstance->GetGameObjects())
+//	{
+//		// Find a cat.
+//		if (obj->GetClassId() == catID)
+//		{
+//			RoboCat* cat = dynamic_cast<RoboCat*>(obj.get());
+//			auto id = cat->GetPlayerId();
+//			auto ourID = NetworkManagerClient::sInstance->GetPlayerId();
+//			if (id == ourID)
+//			{
+//
+//				auto centre = cat->GetLocation();
+//				m_lastCatPos.x = centre.mX;
+//				m_lastCatPos.y = centre.mY;
+//				return sf::Vector2f(centre.mX, centre.mY);
+//			}
+//		}
+//	}
+//	return sf::Vector2f(-1, -1);
+//}
 
 void RenderManager::StaticInit()
 {
@@ -72,6 +112,13 @@ void RenderManager::RenderComponents()
 		WindowManager::sInstance->draw(c->GetSprite());	
 	}
 }
+
+void RenderManager::EndGame()
+{
+	sf::Vector2f gameOver(view.getCenter().x - view.getSize().x / 2, view.getCenter().y - view.getSize().y / 2);
+	WindowManager::sInstance->draw(mGameOver);
+}
+
 
 void RenderManager::Render()
 {

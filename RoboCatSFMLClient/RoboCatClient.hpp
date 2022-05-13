@@ -5,6 +5,7 @@ public:
 
 	virtual void Update();
 	virtual void	HandleDying() override;
+	//void EndGame();
 
 	virtual void	Read(InputMemoryBitStream& inInputStream) override;
 
@@ -19,6 +20,8 @@ private:
 	void InterpolateClientSidePrediction(float inOldRotation, const Vector3& inOldLocation, const Vector3& inOldVelocity, bool inIsForRemoteCat);
 	float				mTimeLocationBecameOutOfSync;
 	float				mTimeVelocityBecameOutOfSync;
+
+	float				time;
 
 	SpriteComponentPtr	mSpriteComponent;
 };

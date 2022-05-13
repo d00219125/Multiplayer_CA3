@@ -14,6 +14,7 @@ TextureManager::TextureManager()
 	CacheTexture("yarn", "../Assets/bullet.png");
 	CacheTexture("bg", "../Assets/bg.png");
 	CacheTexture("heart", "../Assets/heart.png");
+	CacheTexture("gameOver", "../Assets/gameOver.png");
 }
 
 TexturePtr	TextureManager::GetTexture(const string& inTextureName)

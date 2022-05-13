@@ -19,12 +19,24 @@ void RoboCatClient::HandleDying()
 	}
 }
 
+//void RoboCatClient::EndGame()
+//{
+//
+//}
+
 
 void RoboCatClient::Update()
 {
 	//is this the cat owned by us?
 	if (GetPlayerId() == NetworkManagerClient::sInstance->GetPlayerId())
 	{
+
+		//time += Timing::sInstance.GetDeltaTime();
+		//if (time > 20) 
+		//{
+		//	EndGame();
+		//}
+
 		const Move* pendingMove = InputManager::sInstance->GetAndClearPendingMove();
 		//in theory, only do this if we want to sample input this frame / if there's a new move ( since we have to keep in sync with server )
 		if (pendingMove) //is it time to sample a new move...
@@ -53,6 +65,7 @@ void RoboCatClient::Update()
 		}
 	}
 }
+
 
 void RoboCatClient::Read(InputMemoryBitStream& inInputStream)
 {

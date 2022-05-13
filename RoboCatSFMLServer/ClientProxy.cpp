@@ -22,10 +22,10 @@ void ClientProxy::UpdateLastPacketTime()
 {
 	mLastPacketFromClientTime = Timing::sInstance.GetTimef();
 	time += Timing::sInstance.GetDeltaTime();
-	if (time > 20) 
-	{
-		EndGame();
-	}
+	//if (time > 20) 
+	//{
+	//	EndGame();
+	//}
 }
 
 void	ClientProxy::HandleCatDied()
@@ -42,9 +42,9 @@ void	ClientProxy::RespawnCatIfNecessary()
 	}
 }
 
-void ClientProxy::EndGame()
-{
-	static_cast<Server*> (Engine::s_instance.get())->GameEnd();
-}
+//void ClientProxy::EndGame()
+//{
+//	static_cast<Server*> (Engine::s_instance.get())->GameEnd();
+//}
 
 

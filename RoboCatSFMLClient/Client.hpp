@@ -14,4 +14,6 @@ protected:
 
 private:
 
+	float time = 0;
+
 };

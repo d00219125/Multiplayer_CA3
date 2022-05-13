@@ -24,7 +24,8 @@ public:
 
 	void	HandleCatDied();
 	void	RespawnCatIfNecessary();
-	void EndGame();
+	//void EndGame();
+
 private:
 	float time;
 	DeliveryNotificationManager	mDeliveryNotificationManager;

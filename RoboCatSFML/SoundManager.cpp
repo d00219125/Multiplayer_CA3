@@ -13,7 +13,7 @@ SoundManager::SoundManager()
 	LoadSoundFromFile(death, deathB, "../Assets/Splatter.wav");
 	LoadSoundFromFile(music, musicB, "../Assets/MissionTheme.wav");
 	LoadSoundFromFile(death2, death2B, "../Assets/death.wav");
-	//LoadMusicFromFile(bgMusic, "../Assets/MissionTheme.wav");
+	LoadMusicFromFile(bgMusic, "../Assets/MissionTheme.wav");
 
 }
 

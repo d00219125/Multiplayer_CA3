@@ -49,6 +49,12 @@ void Client::DoFrame()
 	RenderManager::sInstance->Render();
 
 	NetworkManagerClient::sInstance->SendOutgoingPackets();
+
+	time += Timing::sInstance.GetDeltaTime();
+	if (time > 10)
+	{
+		RenderManager::sInstance->EndGame();
+	}
 }
 
 void Client::HandleEvent(sf::Event& p_event)

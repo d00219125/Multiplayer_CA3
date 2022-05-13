@@ -23,7 +23,7 @@ private:
 
 	sf::Sound pickup, shoot, death, join, music, death2;
 	sf::SoundBuffer picukupB, shootB, deathB, joinB, musicB, death2B;
-	//sf::Music bgMusic;
+	sf::Music bgMusic;
 	void LoadSoundFromFile(sf::Sound& p_sound, sf::SoundBuffer& p_buffer, string p_file);
 	void LoadMusicFromFile(sf::Music& p_music, string p_file);
 
