@@ -12,7 +12,7 @@ public:
 
 	void SetPlayerHealth(int inHealth) { mHealth = inHealth; }
 	void SetPlayerAmmo(int inAmmo) { mAmmo = inAmmo; }
-
+	void WriteScoresToFile();
 private:
 
 	HUD();
@@ -23,7 +23,8 @@ private:
 	void	RenderHealth();
 	void	RenderAmmo();
 	void	RenderText(const string& inStr, const Vector3& origin, const Vector3& inColor);
-	void WriteScoresToFile();
+	
+	void DisplayScore();
 
 	Vector3										mBandwidthOrigin;
 	Vector3										mRoundTripTimeOrigin;
@@ -35,7 +36,7 @@ private:
 	int											mAmmo;
 
 	std::ofstream file;
-
+	std::ifstream fileIn;
 	//sf::Sprite mHeart;
 };
 

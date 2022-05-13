@@ -28,7 +28,8 @@ void HUD::Render()
 	RenderScoreBoard();
 	RenderHealth();
 	//RenderAmmo();
-	WriteScoresToFile();
+	//WriteScoresToFile();
+	DisplayScore();
 }
 
 void HUD::RenderHealth()
@@ -104,5 +105,25 @@ void HUD::WriteScoresToFile()
 		file << 	entry.GetFormattedNameScore() << "\n";
 	}
 	file.close();
+
+	
+}
+
+void HUD::DisplayScore()
+{
+	std::string s, highScorer;
+	int highScore = 0;
+	fileIn.open("../Assets/txt.txt");
+	while (std::getline(fileIn, s)) 
+	{
+		int whitespaceIndex = s.find_first_of(' ');
+		int i = std::stoi(s.substr(whitespaceIndex+1)) ;
+		if (i > highScore) 
+		{
+			highScorer = s;
+		}
+	}
+	fileIn.close();
+	RenderText(highScorer, Vector3(500, 500, 0), Vector3(255, 255, 255));
 }
 
