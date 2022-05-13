@@ -28,6 +28,7 @@ void HUD::Render()
 	RenderScoreBoard();
 	RenderHealth();
 	//RenderAmmo();
+	WriteScoresToFile();
 }
 
 void HUD::RenderHealth()
@@ -72,7 +73,7 @@ void HUD::RenderScoreBoard()
 {
 	const vector< ScoreBoardManager::Entry >& entries = ScoreBoardManager::sInstance->GetEntries();
 	Vector3 offset = mScoreBoardOrigin;
-
+	
 	for (const auto& entry : entries)
 	{
 		RenderText(entry.GetFormattedNameScore(), offset, entry.GetColor());
@@ -91,5 +92,17 @@ void HUD::RenderText(const string& inStr, const Vector3& origin, const Vector3& 
 	text.setPosition(origin.mX, origin.mY);
 	text.setFont(*FontManager::sInstance->GetFont("carlito"));
 	WindowManager::sInstance->draw(text);
+}
+
+void HUD::WriteScoresToFile()
+{
+	const vector< ScoreBoardManager::Entry >& entries = ScoreBoardManager::sInstance->GetEntries();
+	Vector3 offset = mScoreBoardOrigin;
+	file.open("../Assets/txt.txt");
+	for (const auto& entry : entries)
+	{
+		file << 	entry.GetFormattedNameScore() << "\n";
+	}
+	file.close();
 }
 

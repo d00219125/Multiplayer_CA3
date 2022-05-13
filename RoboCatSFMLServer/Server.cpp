@@ -77,9 +77,7 @@ void Server::SetupWorld()
 	//spawn some random mice
 	//CreateRandomMice(10);
 	//SetZombieTarget();
-	file.open("../Assets/txt.txt");
-	file << "WriteThis\n";
-	file.close();
+
 	//spawn more random mice!
 	//CreateRandomMice(10);
 }

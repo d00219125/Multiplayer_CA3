@@ -1,5 +1,3 @@
-#include <iostream>
-#include <fstream>
 class Server : public Engine
 {
 public:
@@ -30,8 +28,7 @@ private:
 	float timePassed;
 	float timeSinceLastSpawn;
 
-	std::ofstream file;
-	std::ofstream tegst;
+
 	//std::vector<RoboCat*> players;
 	//std::vector<Zombie*> zombies;
 	//sf::Clock delay;
