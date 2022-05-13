@@ -51,7 +51,7 @@ void Client::DoFrame()
 	NetworkManagerClient::sInstance->SendOutgoingPackets();
 
 	time += Timing::sInstance.GetDeltaTime();
-	if (time > 10)
+	if (time > 200)
 	{
 		RenderManager::sInstance->EndGame();
 	}

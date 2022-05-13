@@ -117,6 +117,7 @@ void RenderManager::EndGame()
 {
 	sf::Vector2f gameOver(view.getCenter().x - view.getSize().x / 2, view.getCenter().y - view.getSize().y / 2);
 	WindowManager::sInstance->draw(mGameOver);
+	WindowManager::sInstance->display();
 }
 
 
