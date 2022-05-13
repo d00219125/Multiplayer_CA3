@@ -99,7 +99,7 @@ void Server::DoFrame()
 	
 	timePassed += Timing::sInstance.GetDeltaTime();
 	timeSinceLastSpawn += Timing::sInstance.GetDeltaTime();
-	if (timePassed > 45 && (int)timeSinceLastSpawn > 15 )
+	if (timePassed > 0 && (int)timeSinceLastSpawn > 15 )
 	{
 		timeSinceLastSpawn = 0;
 		CreateRandomMice(6);
@@ -196,7 +196,7 @@ RoboCatPtr Server::GetCatForPlayer(int inPlayerId)
 			return std::static_pointer_cast<RoboCat>(go);
 		}
 	}
-	SetZombieTarget();
+	//SetZombieTarget();
 	return nullptr;
 
 }
