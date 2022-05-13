@@ -99,7 +99,7 @@ void Server::DoFrame()
 	
 	timePassed += Timing::sInstance.GetDeltaTime();
 	timeSinceLastSpawn += Timing::sInstance.GetDeltaTime();
-	if (timePassed > 15 && (int)timeSinceLastSpawn > 15 )
+	if (timePassed > 45 && (int)timeSinceLastSpawn > 15 )
 	{
 		timeSinceLastSpawn = 0;
 		CreateRandomMice(6);
