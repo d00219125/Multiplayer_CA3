@@ -18,6 +18,8 @@ public:
 
 	void SetZombieTarget();
 
+	void GameEnd();
+
 private:
 	Server();
 

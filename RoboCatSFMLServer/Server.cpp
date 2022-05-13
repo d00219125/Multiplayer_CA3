@@ -161,6 +161,11 @@ void Server::SetZombieTarget()
 		}
 }
 
+void Server::GameEnd()
+{
+	LOG("END", 0);
+}
+
 void Server::HandleLostClient(ClientProxyPtr inClientProxy)
 {
 	//kill client's cat
