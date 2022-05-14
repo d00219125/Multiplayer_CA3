@@ -13,52 +13,50 @@ RenderManager::RenderManager() : mSprite()
 	auto tSize = texture->getSize();
 	mSprite.setTexture(*texture);
 	mSprite.setOrigin(tSize.x / 2, tSize.y / 2);
-
-	//sf::IntRect rect = sf::IntRect(1, 1, tSize.x, tSize.y);
-	//mSprite.setTextureRect(rect);
-
 	mSprite.setPosition(960, 544);
+
 }
 
 //Center camera on player
+//modified From shadow code
 
-//void RenderManager::UpdateView()
-//{
-//
-//	float rate = .02f;
-//	if (FindCatCentre() != sf::Vector2f(-1, -1))
-//	{
-//		sf::Vector2f player = FindCatCentre();
-//		sf::Vector2f newCentre = view.getCenter() + ((player - view.getCenter()) * rate);
-//		view.setCenter(newCentre);
-//	}
-//	WindowManager::sInstance->setView(view);
-//}
-//
-//
-//sf::Vector2f RenderManager::FindCatCentre()
-//{
-//	uint32_t catID = (uint32_t)'RCAT';
-//	for (auto obj : World::sInstance->GetGameObjects())
-//	{
-//		// Find a cat.
-//		if (obj->GetClassId() == catID)
-//		{
-//			RoboCat* cat = dynamic_cast<RoboCat*>(obj.get());
-//			auto id = cat->GetPlayerId();
-//			auto ourID = NetworkManagerClient::sInstance->GetPlayerId();
-//			if (id == ourID)
-//			{
-//
-//				auto centre = cat->GetLocation();
-//				m_lastCatPos.x = centre.mX;
-//				m_lastCatPos.y = centre.mY;
-//				return sf::Vector2f(centre.mX, centre.mY);
-//			}
-//		}
-//	}
-//	return sf::Vector2f(-1, -1);
-//}
+void RenderManager::UpdateView()
+{
+
+	float rate = .02f;
+	if (FindCatCentre() != sf::Vector2f(-1, -1))
+	{
+		sf::Vector2f player = FindCatCentre();
+		sf::Vector2f newCentre = view.getCenter() + ((player - view.getCenter()) * rate);
+		view.setCenter(newCentre);
+	}
+	WindowManager::sInstance->setView(view);
+}
+
+//modified From shadow code
+sf::Vector2f RenderManager::FindCatCentre()
+{
+	uint32_t catID = (uint32_t)'RCAT';
+	for (auto obj : World::sInstance->GetGameObjects())
+	{
+		// Find a cat.
+		if (obj->GetClassId() == catID)
+		{
+			RoboCat* cat = dynamic_cast<RoboCat*>(obj.get());
+			auto id = cat->GetPlayerId();
+			auto ourID = NetworkManagerClient::sInstance->GetPlayerId();
+			if (id == ourID)
+			{
+
+				auto centre = cat->GetLocation();
+				m_lastCatPos.x = centre.mX;
+				m_lastCatPos.y = centre.mY;
+				return sf::Vector2f(centre.mX, centre.mY);
+			}
+		}
+	}
+	return sf::Vector2f(-1, -1);
+}
 
 void RenderManager::StaticInit()
 {
@@ -132,6 +130,8 @@ void RenderManager::Render()
 	RenderManager::sInstance->RenderComponents();
 
 	HUD::sInstance->Render();
+
+	UpdateView();
 
 	//
 	// Present our back buffer to our front buffer

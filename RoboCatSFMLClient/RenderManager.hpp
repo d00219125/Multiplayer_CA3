@@ -9,7 +9,7 @@ public:
 
 	void Render();
 	void RenderComponents();
-	//void UpdateView();
+	void UpdateView();
 	void EndGame();
 
 	//vert inefficient method of tracking scene graph...
@@ -17,7 +17,7 @@ public:
 	void RemoveComponent(SpriteComponent* inComponent);
 	int	 GetComponentIndex(SpriteComponent* inComponent) const;
 
-	//sf::Vector2f FindCatCentre();
+	sf::Vector2f FindCatCentre();
 
 private:
 
@@ -28,6 +28,7 @@ private:
 	sf::Sprite mSprite;
 	sf::View view;
 	sf::Sprite mGameOver;
+	sf::Sprite mOutside;
 
 	float time;
 
