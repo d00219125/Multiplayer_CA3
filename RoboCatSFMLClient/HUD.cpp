@@ -124,6 +124,8 @@ void HUD::DisplayScore()
 		}
 	}
 	fileIn.close();
-	RenderText(highScorer, Vector3(500, 500, 0), Vector3(255, 255, 255));
+	string hs = "Last score: " + highScorer;
+	RenderText(hs, Vector3(1500, 60, 0), Vector3(255, 255, 255));
+	//RenderText(highScorer, Vector3(1700, 60, 0), Vector3(255, 255, 255));
 }
 
