@@ -56,8 +56,8 @@ namespace
 
 	void CreateRandomMice(int inZombieCount)
 	{
-		Vector3 ZombieMin(100.f, 100.f, 0.f);
-		Vector3 ZombieMax(1180.f, 620.f, 0.f);
+		Vector3 ZombieMin(60.f, 100.f, 0.f);
+		Vector3 ZombieMax(1800.f, 1100.f, 0.f);
 		GameObjectPtr go;
 
 		//make a Zombie somewhere- where will these come from?
@@ -100,7 +100,7 @@ void Server::DoFrame()
 	if (timePassed > 0 && (int)timeSinceLastSpawn > 15 )
 	{
 		timeSinceLastSpawn = 0;
-		CreateRandomMice(6);
+		CreateRandomMice(10);
 		SetZombieTarget();
 	}
 }
